@@ -9,21 +9,25 @@ let passwordArr = [];
 function generatePassword() {
   // prompts for how you want your password
   if (passwordArr.length == 0) {
-    let passwordLength = prompt('How long would you like your password to be? Please choose between 8 and 128 character.')
+    const passwordLength = prompt('How long would you like your password to be? Please choose between 8 and 128 character.')
     if (passwordLength < 8 || passwordLength > 128 || passwordLength === '') {
-      alert('Password length must be between 8 and 128 characters');
-      return;
+      alert('Password length must be between 8 and 128 character. Please Click "Generate Password" Again.')
+      
+      console.log(passwordLength);
+      return
     };
+
     let lowerCase = confirm('Would you like to use lowercase letters?');
     let upperCase = confirm('Would you like to use uppercase letters?');
     let numbers = confirm('Would you like to use numbers?');
     let symbols = confirm('Would you like to use symbols?');
+    console.log(lowerCase, upperCase, numbers, symbols);
     if (lowerCase === false && upperCase === false && numbers === false && symbols === false) {
       alert('You must choose at least one variable for your password.')
       generatePassword();
-    } 
-
-    // if statements to determine what character types you want in password
+    };
+ 
+    // if statements to determine what character types to put in password
     if (lowerCase === true) {
       passHolder = passHolder.concat(lower)
     }
@@ -45,10 +49,9 @@ function generatePassword() {
     }
 
     return (passwordArr.join(''));
-  }
-  else {
+  } else {
     alert("please refresh page for new password")
-  }
+  };
 };
 
 // Get references to the #generate element
